@@ -34,3 +34,7 @@ You should see:
 
 Open browser and go to:
 http://127.0.0.1:5000
+
+This project uses the ***Google Places API for business/place data and Hunter API for finding/verifying professional email addresses.
+To use the app, add your own API keys when you search for the leads.
+Both services offer limited free usage for eligible accounts, so please check their official pages before heavy use.
