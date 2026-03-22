@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Corporate Travel Lead Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f5f5f5; margin:30px; }
+        .box { max-width: 1100px; margin:auto; background:white; padding:24px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.08); }
+        input, button { width:100%; padding:10px; margin:8px 0 16px; }
+        button { background:#0b69c7; color:white; border:none; cursor:pointer; }
+        button:hover { background:#0957a3; }
+        .msg { margin: 16px 0; font-weight: bold; }
+        table { width:100%; border-collapse:collapse; margin-top:20px; font-size:14px; }
+        th, td { border:1px solid #ddd; padding:8px; text-align:left; vertical-align:top; }
+        th { background:#fafafa; }
+        a.download { display:inline-block; padding:10px 14px; background:#198754; color:white; text-decoration:none; border-radius:6px; margin-top:12px; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Corporate Travel Lead Generator</h2>
+
+    <form method="POST">
+        <label>Google Places API Key</label>
+        <input type="text" name="google_api_key" placeholder="Paste Google API key" required>
+
+        <label>Hunter API Key (optional)</label>
+        <input type="text" name="hunter_api_key" placeholder="Paste Hunter API key">
+
+        <label>Industry / Company Type</label>
+        <input type="text" name="keyword" placeholder="Example: manufacturing companies" required>
+
+        <label>City</label>
+        <input type="text" name="city" placeholder="Example: Bengaluru" required>
+
+        <button type="submit">Generate Leads</button>
+    </form>
+
+    {% if message %}
+        <div class="msg">{{ message }}</div>
+    {% endif %}
+
+    {% if preview_rows and preview_rows|length > 0 %}
+        <a class="download" href="/download">Download Excel</a>
+
+        <table>
+            <thead>
+                <tr>
+                    {% for key in preview_rows[0].keys() %}
+                        <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in preview_rows %}
+                    <tr>
+                        {% for value in row.values() %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
