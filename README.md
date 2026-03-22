@@ -1,5 +1,5 @@
 # Lead-generator-
-## Project Structure
+## Lead-generator Structure
 lead_generator/
 │
 ├── app.py
